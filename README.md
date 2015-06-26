@@ -8,8 +8,9 @@ from com.acemobe.spriter:
 - pivot_x/pivot_y support
 - curve_type cube, quadratic, instant, linear interpolation support for keyframes
 
-from treefortress.spriter
-- scml atlas automatic building/loading
+from treefortress.spriter:
+- atlas automatic building/loading for scml animations
+
 ```
     var full_url:String = ...
     var spriterLoader:SpriterLoader = new SpriterLoader(
