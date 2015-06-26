@@ -202,6 +202,10 @@ package com.acemobe.spriter
 			}
 		}
 		
+		public function setTime(time:Number):void {
+			currentTime = 0;
+		}
+		
 		public	function playAnim (animName:String, nextAnim:String = "", callback:* = null, force:Boolean = false):void
 		{
 			var	entity:Entity = animation.entities[currentEntity] as Entity;
@@ -212,7 +216,10 @@ package com.acemobe.spriter
 			for (var a:int = 0; a < entity.animations.length; a++)
 			{
 				var	anim:Animation = entity.animations[a] as Animation;
-				
+				if (animName == null) {
+					// Default animation
+					animName = anim.name;
+				}
 				if (anim.name == animName)
 				{
 					if (currentAnimation != a || force)
@@ -259,7 +266,7 @@ package com.acemobe.spriter
 			if (anim && curAtlas)
 			{
 				currentTime += (time * playbackSpeed);
-				
+			
 				anim.setCurrentTime (currentTime * 1000);
 				
 				activePoints.length = 0;
@@ -278,7 +285,7 @@ package com.acemobe.spriter
 						
 						if (!image)
 							image = getImageByName (spriteKey);
-						
+							
 						if (image)
 						{
 							if (!spriteKey.useDefaultPivot)
